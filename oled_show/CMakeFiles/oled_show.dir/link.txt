@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic CMakeFiles/oled_show.dir/src/main.c.o CMakeFiles/oled_show.dir/src/ssd1306.c.o CMakeFiles/oled_show.dir/src/sys_status.c.o -o oled_show  -Wl,-rpath,/usr/local/lib /usr/local/lib/libwiringPi.so 
