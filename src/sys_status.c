@@ -48,26 +48,40 @@ char* showtime(void)//当前时间
 
 int getCPUtemperature(void)
 {
-    char buffer[20],buf[20];
-    int i=0,j=0,re;
-    //FILE *fd= popen("cat /sys/class/thermal/thermal_zone0/temp","r");
-    FILE *fd= vpopen("cat /sys/class/thermal/thermal_zone0/temp","r");
-    if (!fd) {  
-        fprintf(stderr, "Erro to popen t");  
-    }  
-    while (fgets(buffer, 20, fd) != NULL);
+    FILE *fd;
+    int re;
+    char buff[256];
+    fd = fopen ("/sys/class/thermal/thermal_zone0/temp", "r");
+    if(fd == NULL)
+    {
+            perror("fopen:");
+            exit (0);
+    }
+    fgets (buff, sizeof(buff), fd);
+    
+    re = atoi(buff);
+//printf("buf=%s  re = %d\n",buff,re);
+//     char buffer[20],buf[20];
+//     int i=0,j=0,re;
+//     FILE *fd= popen("cat /sys/class/thermal/thermal_zone0/temp","r");
+//     //FILE *fd= vpopen("cat /sys/class/thermal/thermal_zone0/temp","r");
+//     if (!fd) {  
+//         fprintf(stderr, "Erro to popen t");  
+//     }  
+//     while (fgets(buffer, 20, fd) != NULL);
 
-    while (buffer[i] != '\0')
-	{
-		if (buffer[i]>='0'&&buffer[i]<='9') {
-			buf[j]=buffer[i];
-			j++;
-		}
-		i++;
-	}
-    buf[j]='\0';
-   re = atoi(buf);
-    vpclose(fd);
+//     while (buffer[i] != '\0')
+// 	{
+// 		if (buffer[i]>='0'&&buffer[i]<='9') {
+// 			buf[j]=buffer[i];
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+//     buf[j]='\0';
+//    re = atoi(buf);
+//     //vpclose(fd);
+//     pclose(fd);
    return re;
 }
 
@@ -78,7 +92,7 @@ int  getRAM_total(void)
     int i=0,j=0,re;
     //FILE *fd= popen("cat /proc/meminfo |grep -w MemTotal:","r");
     FILE *fd= vpopen("cat /proc/meminfo |grep -w MemTotal:","r");
-    if (!fd) {  
+    if (!fd) {
         fprintf(stderr, "Erro to popen ram");  
     }
     fgets(buffer, 40, fd);

@@ -6,25 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/pi/Desktop/oled_show/src/main.c
-stdio.h
--
-string.h
--
-ssd1306.h
-/home/pi/Desktop/oled_show/src/ssd1306.h
-sys_status.h
-/home/pi/Desktop/oled_show/src/sys_status.h
-
 /home/pi/Desktop/oled_show/src/sys_status.c
 sys_status.h
 /home/pi/Desktop/oled_show/src/sys_status.h
-
-inc/ssd1306.h
-wiringPi.h
--
-wiringPiI2C.h
--
 
 inc/sys_status.h
 stdio.h
