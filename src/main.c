@@ -7,6 +7,7 @@ int main(void)
 {
     int fd_oled;
     char buff[200];//缓冲区
+    mem_info_t mem_info;
 /***********************************下面开始显示操作*******************************/
     OLED_Init(&fd_oled);
  	OLED_Refresh(fd_oled);
@@ -24,9 +25,10 @@ int main(void)
         OLED_ShowString(3,32,buff,12);
 
         memset(buff,0x00,sizeof(buff));
-        sprintf(buff,"RAM:%d / %d MB ",(getRAM_total()-getRAM_free())/1024,getRAM_total()/1024);
+        mem_info=getRAM();
+        sprintf(buff,"RAM:%d / %d MB ",(mem_info.total-mem_info.free)/1024,mem_info.total/1024);
 		OLED_ShowString(3,46,buff,12);
-
+        
         OLED_DrawLine(0,0,127,0);
         OLED_DrawLine(0,0,0,63);
         OLED_DrawLine(0,63,127,63);

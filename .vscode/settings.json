@@ -1,6 +1,7 @@
 {
     "makefile.extensionOutputFolder": "./.vscode",
     "files.associations": {
-        "sys_status.h": "c"
+        "sys_status.h": "c",
+        "typeinfo": "c"
     }
 }
