@@ -5,6 +5,7 @@ CMakeFiles/oled_i2c_show_status.dir/src/main.c.o
  /home/pi/Desktop/oled_show/src/main.c
  inc/ssd1306.h
  inc/sys_status.h
+ inc/vpopen.h
 CMakeFiles/oled_i2c_show_status.dir/src/ssd1306.c.o
  /home/pi/Desktop/oled_show/src/ssd1306.c
  inc/character.h
@@ -12,3 +13,7 @@ CMakeFiles/oled_i2c_show_status.dir/src/ssd1306.c.o
 CMakeFiles/oled_i2c_show_status.dir/src/sys_status.c.o
  /home/pi/Desktop/oled_show/src/sys_status.c
  inc/sys_status.h
+ inc/vpopen.h
+CMakeFiles/oled_i2c_show_status.dir/src/vpopen.c.o
+ /home/pi/Desktop/oled_show/src/vpopen.c
+ inc/vpopen.h

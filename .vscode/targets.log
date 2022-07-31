@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 31 09:28:54 2022
+# Make data base, printed on Sun Jul 31 18:21:24 2022
 
 # Variables
 
@@ -51,7 +51,7 @@ PKG_CONFIG_PATH = :/usr/local/lib/pkgconfig
 # makefile
 CURDIR := /home/pi/Desktop/oled_show
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -103,7 +103,7 @@ MOTD_SHOWN = pam
 # automatic
 ^F = $(notdir $^)
 # environment
-SSH_CLIENT = 192.168.43.82 23863 22
+SSH_CLIENT = 192.168.43.82 2309 22
 # automatic
 ?F = $(notdir $?)
 # environment
@@ -135,7 +135,7 @@ _ = /home/pi/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/node
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-048eb967-da2f-4a7a-b1cf-d46aef7605c7.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-58e2b4c3-c509-4548-b76e-83e50f1235ad.sock
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -145,7 +145,7 @@ HOME = /home/pi
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-XDG_SESSION_ID = 4
+XDG_SESSION_ID = 8
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -155,7 +155,7 @@ SUFFIXES :=
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
 # environment
-SSH_CONNECTION = 192.168.43.82 23863 192.168.43.101 22
+SSH_CONNECTION = 192.168.43.82 2309 192.168.43.101 22
 # variable set hash-table stats:
 # Load=73/1024=7%, Rehash=0, Collisions=1/112=1%
 
@@ -167,9 +167,9 @@ SSH_CONNECTION = 192.168.43.82 23863 192.168.43.101 22
 
 # RCS: could not be stat'd.
 # SCCS: could not be stat'd.
-# . (device 45826, inode 544184): 15 files, no impossibilities.
+# . (device 45826, inode 544184): 17 files, no impossibilities.
 
-# 15 files, no impossibilities in 3 directories.
+# 17 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -272,11 +272,18 @@ src/sys_status.o: src/sys_status.c.o
 #  File does not exist.
 #  File has not been updated.
 
+src/vpopen.c.s:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 250):
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/oled_i2c_show_status.dir/build.make CMakeFiles/oled_i2c_show_status.dir/src/vpopen.c.s
+
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
- 
-#  Last modified 2022-07-30 19:25:55.922053734
+#  Last modified 2022-07-31 17:08:13.393063457
 #  File has been updated.
 #  Successfully updated.
 
@@ -322,6 +329,15 @@ cmake_force:
 #  File does not exist.
 #  File has not been updated.
 
+src/vpopen.c.i:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+ 
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 241):
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/oled_i2c_show_status.dir/build.make CMakeFiles/oled_i2c_show_status.dir/src/vpopen.c.i
+
 preinstall/fast:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
@@ -329,6 +345,12 @@ preinstall/fast:
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 124):
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+
+src/vpopen.o: src/vpopen.c.o
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
 
 edit_cache:
 #  Phony target (prerequisite of .PHONY).
@@ -357,6 +379,12 @@ rebuild_cache/fast: rebuild_cache
 .hpux_make_needs_suffix_list:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+#  File has not been updated.
+
+src/vpopen.i: src/vpopen.c.i
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
 #  File has not been updated.
 
 preinstall: all
@@ -410,7 +438,7 @@ help:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 228):
+#  recipe to execute (from 'Makefile', line 255):
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
@@ -427,12 +455,23 @@ help:
 	@echo "... src/sys_status.o"
 	@echo "... src/sys_status.i"
 	@echo "... src/sys_status.s"
+	@echo "... src/vpopen.o"
+	@echo "... src/vpopen.i"
+	@echo "... src/vpopen.s"
 
 clean/fast: clean
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
+
+src/vpopen.c.o:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 232):
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/oled_i2c_show_status.dir/build.make CMakeFiles/oled_i2c_show_status.dir/src/vpopen.c.o
 
 src/sys_status.s: src/sys_status.c.s
 #  Phony target (prerequisite of .PHONY).
@@ -494,15 +533,21 @@ cmake_check_build_system:
 # | := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/14=7%
-#  recipe to execute (from 'Makefile', line 255):
+#  recipe to execute (from 'Makefile', line 285):
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+
+src/vpopen.s: src/vpopen.c.s
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
 
 .SUFFIXES: .hpux_make_needs_suffix_list
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-.PHONY: default_target cmake_force rebuild_cache rebuild_cache/fast edit_cache edit_cache/fast all clean clean/fast preinstall preinstall/fast depend oled_i2c_show_status oled_i2c_show_status/fast src/main.o src/main.c.o src/main.i src/main.c.i src/main.s src/main.c.s src/ssd1306.o src/ssd1306.c.o src/ssd1306.i src/ssd1306.c.i src/ssd1306.s src/ssd1306.c.s src/sys_status.o src/sys_status.c.o src/sys_status.i src/sys_status.c.i src/sys_status.s src/sys_status.c.s help cmake_check_build_system
+.PHONY: default_target cmake_force rebuild_cache rebuild_cache/fast edit_cache edit_cache/fast all clean clean/fast preinstall preinstall/fast depend oled_i2c_show_status oled_i2c_show_status/fast src/main.o src/main.c.o src/main.i src/main.c.i src/main.s src/main.c.s src/ssd1306.o src/ssd1306.c.o src/ssd1306.i src/ssd1306.c.i src/ssd1306.s src/ssd1306.c.s src/sys_status.o src/sys_status.c.o src/sys_status.i src/sys_status.c.i src/sys_status.s src/sys_status.c.s src/vpopen.o src/vpopen.c.o src/vpopen.i src/vpopen.c.i src/vpopen.s src/vpopen.c.s help cmake_check_build_system
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -516,19 +561,19 @@ src/ssd1306.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/oled_i2c_show_status.dir/build.make CMakeFiles/oled_i2c_show_status.dir/src/ssd1306.c.s
 
 # files hash-table stats:
-# Load=41/1024=4%, Rehash=0, Collisions=4/149=3%
+# Load=47/1024=5%, Rehash=0, Collisions=4/173=2%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 65 / storage = 808 B / avg = 12 B
-# current buf: size = 8174 B / used = 808 B / count = 65 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 73 / storage = 912 B / avg = 12 B
+# current buf: size = 8174 B / used = 912 B / count = 73 / avg = 12 B
 
-# strcache performance: lookups = 233 / hit rate = 72%
+# strcache performance: lookups = 268 / hit rate = 72%
 # hash-table stats:
-# Load=65/8192=1%, Rehash=0, Collisions=0/233=0%
-# Finished Make data base on Sun Jul 31 09:28:54 2022
+# Load=73/8192=1%, Rehash=0, Collisions=0/268=0%
+# Finished Make data base on Sun Jul 31 18:21:24 2022
 
  

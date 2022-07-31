@@ -6,7 +6,7 @@
 int main(void)
 {
     int fd_oled;
-    char buff[100];//缓冲区
+    char buff[200];//缓冲区
 /***********************************下面开始显示操作*******************************/
     OLED_Init(&fd_oled);
  	OLED_Refresh(fd_oled);
@@ -20,8 +20,7 @@ int main(void)
         OLED_ShowString(21,18,buff,12);
 
         memset(buff,0x00,sizeof(buff));
-        sprintf(buff,"CPU LOAD:%.0f%% ",get_sysCpuUsage());
-        strcat(buff,getCPUtemperature());
+        sprintf(buff,"CPU LOAD:%.0f%% %d`C",get_sysCpuUsage(),getCPUtemperature()/1000);
         OLED_ShowString(3,32,buff,12);
 
         memset(buff,0x00,sizeof(buff));
@@ -36,6 +35,7 @@ int main(void)
         OLED_DrawLine(0,15,127,15);
         OLED_Refresh(fd_oled);
         OLED_Clear(fd_oled);
+       // sleep(1);
     }
 }
 

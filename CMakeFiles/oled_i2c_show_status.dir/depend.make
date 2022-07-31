@@ -4,6 +4,7 @@
 CMakeFiles/oled_i2c_show_status.dir/src/main.c.o: src/main.c
 CMakeFiles/oled_i2c_show_status.dir/src/main.c.o: inc/ssd1306.h
 CMakeFiles/oled_i2c_show_status.dir/src/main.c.o: inc/sys_status.h
+CMakeFiles/oled_i2c_show_status.dir/src/main.c.o: inc/vpopen.h
 
 CMakeFiles/oled_i2c_show_status.dir/src/ssd1306.c.o: src/ssd1306.c
 CMakeFiles/oled_i2c_show_status.dir/src/ssd1306.c.o: inc/character.h
@@ -11,4 +12,8 @@ CMakeFiles/oled_i2c_show_status.dir/src/ssd1306.c.o: inc/ssd1306.h
 
 CMakeFiles/oled_i2c_show_status.dir/src/sys_status.c.o: src/sys_status.c
 CMakeFiles/oled_i2c_show_status.dir/src/sys_status.c.o: inc/sys_status.h
+CMakeFiles/oled_i2c_show_status.dir/src/sys_status.c.o: inc/vpopen.h
+
+CMakeFiles/oled_i2c_show_status.dir/src/vpopen.c.o: src/vpopen.c
+CMakeFiles/oled_i2c_show_status.dir/src/vpopen.c.o: inc/vpopen.h
 

@@ -16,10 +16,12 @@ make[2]: Entering directory '/home/pi/Desktop/oled_show'
 /usr/bin/cc  -I/home/pi/Desktop/oled_show/inc  -o CMakeFiles/oled_i2c_show_status.dir/src/ssd1306.c.o -c /home/pi/Desktop/oled_show/src/ssd1306.c
 /usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/pi/Desktop/oled_show/CMakeFiles --progress-num=3 "Building C object CMakeFiles/oled_i2c_show_status.dir/src/sys_status.c.o"
 /usr/bin/cc  -I/home/pi/Desktop/oled_show/inc  -o CMakeFiles/oled_i2c_show_status.dir/src/sys_status.c.o -c /home/pi/Desktop/oled_show/src/sys_status.c
-/usr/bin/cmake -E cmake_echo_color --switch= --green --bold --progress-dir=/home/pi/Desktop/oled_show/CMakeFiles --progress-num=4 "Linking C executable oled_i2c_show_status"
+/usr/bin/cmake -E cmake_echo_color --switch= --green --progress-dir=/home/pi/Desktop/oled_show/CMakeFiles --progress-num=4 "Building C object CMakeFiles/oled_i2c_show_status.dir/src/vpopen.c.o"
+/usr/bin/cc  -I/home/pi/Desktop/oled_show/inc  -o CMakeFiles/oled_i2c_show_status.dir/src/vpopen.c.o -c /home/pi/Desktop/oled_show/src/vpopen.c
+/usr/bin/cmake -E cmake_echo_color --switch= --green --bold --progress-dir=/home/pi/Desktop/oled_show/CMakeFiles --progress-num=5 "Linking C executable oled_i2c_show_status"
 /usr/bin/cmake -E cmake_link_script CMakeFiles/oled_i2c_show_status.dir/link.txt --verbose=
 make[2]: Leaving directory '/home/pi/Desktop/oled_show'
-/usr/bin/cmake -E cmake_echo_color --switch= --progress-dir=/home/pi/Desktop/oled_show/CMakeFiles --progress-num=1,2,3,4 "Built target oled_i2c_show_status"
+/usr/bin/cmake -E cmake_echo_color --switch= --progress-dir=/home/pi/Desktop/oled_show/CMakeFiles --progress-num=1,2,3,4,5 "Built target oled_i2c_show_status"
 make[1]: Leaving directory '/home/pi/Desktop/oled_show'
 /usr/bin/cmake -E cmake_progress_start /home/pi/Desktop/oled_show/CMakeFiles 0
 make: Leaving directory '/home/pi/Desktop/oled_show'

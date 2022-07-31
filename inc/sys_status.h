@@ -11,6 +11,7 @@
 #include <sys/ioctl.h>
 #include <net/if.h>
 #include <fcntl.h>
+#include "vpopen.h"
 typedef struct cpu_occupy_          //定义一个cpu occupy的结构体
 {
     char name[20];                  //定义一个char类型的数组名name有20个元素
@@ -25,8 +26,7 @@ typedef struct cpu_occupy_          //定义一个cpu occupy的结构体
 
 void getIp(char ip_addr[]);
 char *showtime(void);
-char *getCPUtemperature(void);
-char *getCPUuse(void);
+int getCPUtemperature(void);
 int getRAM_total(void);
 int getRAM_available(void);
 int getRAM_free(void);

@@ -223,6 +223,33 @@ src/sys_status.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/oled_i2c_show_status.dir/build.make CMakeFiles/oled_i2c_show_status.dir/src/sys_status.c.s
 .PHONY : src/sys_status.c.s
 
+src/vpopen.o: src/vpopen.c.o
+
+.PHONY : src/vpopen.o
+
+# target to build an object file
+src/vpopen.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/oled_i2c_show_status.dir/build.make CMakeFiles/oled_i2c_show_status.dir/src/vpopen.c.o
+.PHONY : src/vpopen.c.o
+
+src/vpopen.i: src/vpopen.c.i
+
+.PHONY : src/vpopen.i
+
+# target to preprocess a source file
+src/vpopen.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/oled_i2c_show_status.dir/build.make CMakeFiles/oled_i2c_show_status.dir/src/vpopen.c.i
+.PHONY : src/vpopen.c.i
+
+src/vpopen.s: src/vpopen.c.s
+
+.PHONY : src/vpopen.s
+
+# target to generate assembly for a file
+src/vpopen.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/oled_i2c_show_status.dir/build.make CMakeFiles/oled_i2c_show_status.dir/src/vpopen.c.s
+.PHONY : src/vpopen.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -241,6 +268,9 @@ help:
 	@echo "... src/sys_status.o"
 	@echo "... src/sys_status.i"
 	@echo "... src/sys_status.s"
+	@echo "... src/vpopen.o"
+	@echo "... src/vpopen.i"
+	@echo "... src/vpopen.s"
 .PHONY : help
 
 

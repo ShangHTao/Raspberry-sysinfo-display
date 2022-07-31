@@ -33,7 +33,6 @@ void getIp(char ip_addr[])
     }
 }
 
-
 char* showtime(void)//当前时间
 {
     time_t rawtime;
@@ -47,43 +46,40 @@ char* showtime(void)//当前时间
 }
 
 
-char *getCPUtemperature(void)
+int getCPUtemperature(void)
 {
-    char buffer[20];
-    static char return_buf[6];
-    FILE *fd= popen("vcgencmd measure_temp","r");
-    //返回temp=53.0'C  +5取到53
+    char buffer[20],buf[20];
+    int i=0,j=0,re;
+    //FILE *fd= popen("cat /sys/class/thermal/thermal_zone0/temp","r");
+    FILE *fd= vpopen("cat /sys/class/thermal/thermal_zone0/temp","r");
     if (!fd) {  
-        fprintf(stderr, "Erro to popen");  
+        fprintf(stderr, "Erro to popen t");  
     }  
     while (fgets(buffer, 20, fd) != NULL);
-    pclose(fd);
-    strcpy(return_buf,buffer+5);
-   return return_buf;
-}
 
-
-char *getCPUuse(void)
-{
-    static char buffer[20];
-    FILE *fd= popen("top -n1 | awk '/Cpu\\(s\\):/ {print $2}'","r");
-    if (!fd) {  
-        fprintf(stderr, "Erro to popen");  
-    } 
-    fgets(buffer, 20, fd) != NULL;
-    return buffer;
+    while (buffer[i] != '\0')
+	{
+		if (buffer[i]>='0'&&buffer[i]<='9') {
+			buf[j]=buffer[i];
+			j++;
+		}
+		i++;
+	}
+    buf[j]='\0';
+   re = atoi(buf);
+    vpclose(fd);
+   return re;
 }
 
 
 int  getRAM_total(void)
 {
-    char buffer[40];
-    int i=0,j=0;
-    char buf[40];
-    int  re;
-    FILE *fd= popen("cat /proc/meminfo |grep -w MemTotal:","r");
+    static char buffer[40],buf[40];
+    int i=0,j=0,re;
+    //FILE *fd= popen("cat /proc/meminfo |grep -w MemTotal:","r");
+    FILE *fd= vpopen("cat /proc/meminfo |grep -w MemTotal:","r");
     if (!fd) {  
-        fprintf(stderr, "Erro to popen");  
+        fprintf(stderr, "Erro to popen ram");  
     }
     fgets(buffer, 40, fd);
 
@@ -99,19 +95,20 @@ int  getRAM_total(void)
     re = atoi(buf);
     //puts(return_buf);
     //printf("total=%ld \n",re);
+    vpclose(fd);
+     //pclose(fd);
     return re;
 }
 
 
 int  getRAM_available(void)
 {
-    char buffer[40];
-    int i=0,j=0;
-    char buf[40];
-    int  re;
-    FILE *fd= popen("cat /proc/meminfo |grep -w MemAvailable:","r");
+    static char buffer[40],buf[40];
+    int i=0,j=0,re;
+    //FILE *fd= popen("cat /proc/meminfo |grep -w MemAvailable:","r");
+    FILE *fd= vpopen("cat /proc/meminfo |grep -w MemAvailable:","r");
     if (!fd) {  
-        fprintf(stderr, "Erro to popen");  
+        fprintf(stderr, "Erro to popen ram");  
     }
     fgets(buffer, 40, fd);
 
@@ -128,18 +125,21 @@ int  getRAM_available(void)
     //printf("buffer = %s",buffer);
     //puts(buf);
     //printf("free=%ld \n",re);
+     //vpclose(fd);
+     pclose(fd);
     return re;
 }
 
 int getRAM_free(void)
 {
-    char buffer[40];
+    static char buffer[40];
     int i=0,j=0;
-    char buf[40];
+    static char buf[40];
     int  re;
-    FILE *fd= popen("cat /proc/meminfo |grep -w MemFree:","r");
+    //FILE *fd= popen("cat /proc/meminfo |grep -w MemFree:","r");
+    FILE *fd= vpopen("cat /proc/meminfo |grep -w MemFree:","r");
     if (!fd) {  
-        fprintf(stderr, "Erro to popen");  
+        fprintf(stderr, "Erro to popen ram");  
     }
     fgets(buffer, 40, fd);
 
@@ -156,34 +156,10 @@ int getRAM_free(void)
     //printf("buffer = %s",buffer);
     //puts(buf);
     //printf("free=%ld \n",re);
+    vpclose(fd);
+    //pclose(fd);
     return re;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 double cal_cpuoccupy (cpu_occupy_t *o, cpu_occupy_t *n)
 {

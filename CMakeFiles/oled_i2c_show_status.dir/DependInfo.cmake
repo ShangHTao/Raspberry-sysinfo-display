@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/pi/Desktop/oled_show/src/main.c" "/home/pi/Desktop/oled_show/CMakeFiles/oled_i2c_show_status.dir/src/main.c.o"
   "/home/pi/Desktop/oled_show/src/ssd1306.c" "/home/pi/Desktop/oled_show/CMakeFiles/oled_i2c_show_status.dir/src/ssd1306.c.o"
   "/home/pi/Desktop/oled_show/src/sys_status.c" "/home/pi/Desktop/oled_show/CMakeFiles/oled_i2c_show_status.dir/src/sys_status.c.o"
+  "/home/pi/Desktop/oled_show/src/vpopen.c" "/home/pi/Desktop/oled_show/CMakeFiles/oled_i2c_show_status.dir/src/vpopen.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
