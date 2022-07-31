@@ -16,7 +16,6 @@ int main(void)
         getIp(buff);
         OLED_ShowString(3,2,showtime(),12);
 
-
         OLED_ShowString(3,18,"IP:",12);
         OLED_ShowString(21,18,buff,12);
 
@@ -29,7 +28,6 @@ int main(void)
         sprintf(buff,"RAM:%d / %d MB ",(getRAM_total()-getRAM_free())/1024,getRAM_total()/1024);
 		OLED_ShowString(3,46,buff,12);
 
-        
         OLED_DrawLine(0,0,127,0);
         OLED_DrawLine(0,0,0,63);
         OLED_DrawLine(0,63,127,63);
@@ -38,7 +36,6 @@ int main(void)
         OLED_DrawLine(0,15,127,15);
         OLED_Refresh(fd_oled);
         OLED_Clear(fd_oled);
-        delay(100);
     }
 }
 

@@ -16,10 +16,6 @@ ssd1306.h
 sys_status.h
 /home/pi/Desktop/oled_show/src/sys_status.h
 
-/home/pi/Desktop/oled_show/src/sys_status.c
-sys_status.h
-/home/pi/Desktop/oled_show/src/sys_status.h
-
 inc/ssd1306.h
 wiringPi.h
 -
