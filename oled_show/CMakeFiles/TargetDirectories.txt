@@ -1,0 +1,3 @@
+/home/pi/Desktop/oled_show/CMakeFiles/rebuild_cache.dir
+/home/pi/Desktop/oled_show/CMakeFiles/edit_cache.dir
+/home/pi/Desktop/oled_show/CMakeFiles/oled_i2c_show_status.dir

@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic CMakeFiles/oledshwostatus.dir/src/main.c.o CMakeFiles/oledshwostatus.dir/src/ssd1306.c.o -o oledshwostatus 
