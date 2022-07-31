@@ -1,1 +1,0 @@
-/usr/bin/cc -rdynamic CMakeFiles/oled_i2c_show_status.dir/src/main.c.o CMakeFiles/oled_i2c_show_status.dir/src/ssd1306.c.o CMakeFiles/oled_i2c_show_status.dir/src/sys_status.c.o -o oled_i2c_show_status  -Wl,-rpath,/usr/local/lib /usr/local/lib/libwiringPi.so 
