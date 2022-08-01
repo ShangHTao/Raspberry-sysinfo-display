@@ -23,6 +23,7 @@ typedef struct cpu_occupy_          //定义一个cpu occupy的结构体
     unsigned int irq;
     unsigned int softirq;
 }cpu_occupy_t;
+
 typedef struct mem_info
 {
     char MemTotal[20];
@@ -32,16 +33,12 @@ typedef struct mem_info
 
 }mem_info_t;
 
-
 void getIp(char ip_addr[]);
 char *showtime(void);
 int getCPUtemperature(void);
 mem_info_t getRAM(void);
-//int getRAM_total(void);
-int getRAM_available(void);
-int getRAM_free(void);
-
 double cal_cpuoccupy (cpu_occupy_t *o, cpu_occupy_t *n);
 void get_cpuoccupy (cpu_occupy_t *cpust);
 double get_sysCpuUsage(void);
+
 #endif

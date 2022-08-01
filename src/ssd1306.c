@@ -10,36 +10,45 @@ else{wiringPiI2CWriteReg8(fd,0x00,dat);}
 void OLED_Init(int *fd){
   wiringPiSetup();
   *fd=wiringPiI2CSetup(0x3c);//i2c初始化 0x3c是oled的从机地址
+    wiringPiI2CWriteReg8(*fd,0x00,0xa1);//图像反了修改成0xa0
+    wiringPiI2CWriteReg8(*fd,0x00,0xc8);//行输出反了修改成0xc0
+    wiringPiI2CWriteReg8(*fd,0x00,0x8d);//允许电荷泵
+    wiringPiI2CWriteReg8(*fd,0x00,0x14);
+    wiringPiI2CWriteReg8(*fd,0x00,0xa6);//想反相显示改成0xa7
+    wiringPiI2CWriteReg8(*fd,0x00,0x21);//重置列地址
+    wiringPiI2CWriteReg8(*fd,0x00,0x00);
+    wiringPiI2CWriteReg8(*fd,0x00,0x7f);
+	wiringPiI2CWriteReg8(*fd,0x00,0xaf);//开显示
   
-	OLED_WR_Byte(*fd,0xAE,OLED_CMD);//--turn off oled panel
-	OLED_WR_Byte(*fd,0x00,OLED_CMD);//---set low column address
-	OLED_WR_Byte(*fd,0x10,OLED_CMD);//---set high column address
-	OLED_WR_Byte(*fd,0x40,OLED_CMD);//--set start line address  Set Mapping RAM Display Start Line (*fd,0x00~0x3F)
-	OLED_WR_Byte(*fd,0x81,OLED_CMD);//--set contrast control register
-	OLED_WR_Byte(*fd,0xCF,OLED_CMD);// Set SEG Output Current Brightness
-	OLED_WR_Byte(*fd,0xA1,OLED_CMD);//--Set SEG/Column Mapping     0xa0左右反置 0xa1正常
-	OLED_WR_Byte(*fd,0xC8,OLED_CMD);//Set COM/Row Scan Direction   0xc0上下反置 0xc8正常
-	OLED_WR_Byte(*fd,0xA6,OLED_CMD);//--set normal display
-	OLED_WR_Byte(*fd,0xA8,OLED_CMD);//--set multiplex ratio(*fd,1 to 64)
-	OLED_WR_Byte(*fd,0x3f,OLED_CMD);//--1/64 duty
-	OLED_WR_Byte(*fd,0xD3,OLED_CMD);//-set display offset	Shift Mapping RAM Counter (*fd,0x00~0x3F)
-	OLED_WR_Byte(*fd,0x00,OLED_CMD);//-not offset
-	OLED_WR_Byte(*fd,0xd5,OLED_CMD);//--set display clock divide ratio/oscillator frequency
-	OLED_WR_Byte(*fd,0x80,OLED_CMD);//--set divide ratio, Set Clock as 100 Frames/Sec
-	OLED_WR_Byte(*fd,0xD9,OLED_CMD);//--set pre-charge period
-	OLED_WR_Byte(*fd,0xF1,OLED_CMD);//Set Pre-Charge as 15 Clocks & Discharge as 1 Clock
-	OLED_WR_Byte(*fd,0xDA,OLED_CMD);//--set com pins hardware configuration
-	OLED_WR_Byte(*fd,0x12,OLED_CMD);
-	OLED_WR_Byte(*fd,0xDB,OLED_CMD);//--set vcomh
-	OLED_WR_Byte(*fd,0x40,OLED_CMD);//Set VCOM Deselect Level
-	OLED_WR_Byte(*fd,0x20,OLED_CMD);//-Set Page Addressing Mode (*fd,0x00/0x01/0x02)
-	OLED_WR_Byte(*fd,0x02,OLED_CMD);//
-	OLED_WR_Byte(*fd,0x8D,OLED_CMD);//--set Charge Pump enable/disable
-	OLED_WR_Byte(*fd,0x14,OLED_CMD);//--set(*fd,0x10) disable
-	OLED_WR_Byte(*fd,0xA4,OLED_CMD);// Disable Entire Display On (*fd,0xa4/0xa5)
-	OLED_WR_Byte(*fd,0xA6,OLED_CMD);// Disable Inverse Display On (*fd,0xa6/a7) 
-	OLED_WR_Byte(*fd,0xAF,OLED_CMD);
-	OLED_Clear(*fd);
+	// OLED_WR_Byte(*fd,0xAE,OLED_CMD);//--turn off oled panel
+	// OLED_WR_Byte(*fd,0x00,OLED_CMD);//---set low column address
+	// OLED_WR_Byte(*fd,0x10,OLED_CMD);//---set high column address
+	// OLED_WR_Byte(*fd,0x40,OLED_CMD);//--set start line address  Set Mapping RAM Display Start Line (*fd,0x00~0x3F)
+	// OLED_WR_Byte(*fd,0x81,OLED_CMD);//--set contrast control register
+	// OLED_WR_Byte(*fd,0xCF,OLED_CMD);// Set SEG Output Current Brightness
+	// OLED_WR_Byte(*fd,0xA1,OLED_CMD);//--Set SEG/Column Mapping     0xa0左右反置 0xa1正常
+	// OLED_WR_Byte(*fd,0xC8,OLED_CMD);//Set COM/Row Scan Direction   0xc0上下反置 0xc8正常
+	// OLED_WR_Byte(*fd,0xA6,OLED_CMD);//--set normal display
+	// OLED_WR_Byte(*fd,0xA8,OLED_CMD);//--set multiplex ratio(*fd,1 to 64)
+	// OLED_WR_Byte(*fd,0x3f,OLED_CMD);//--1/64 duty
+	// OLED_WR_Byte(*fd,0xD3,OLED_CMD);//-set display offset	Shift Mapping RAM Counter (*fd,0x00~0x3F)
+	// OLED_WR_Byte(*fd,0x00,OLED_CMD);//-not offset
+	// OLED_WR_Byte(*fd,0xd5,OLED_CMD);//--set display clock divide ratio/oscillator frequency
+	// OLED_WR_Byte(*fd,0x80,OLED_CMD);//--set divide ratio, Set Clock as 100 Frames/Sec
+	// OLED_WR_Byte(*fd,0xD9,OLED_CMD);//--set pre-charge period
+	// OLED_WR_Byte(*fd,0xF1,OLED_CMD);//Set Pre-Charge as 15 Clocks & Discharge as 1 Clock
+	// OLED_WR_Byte(*fd,0xDA,OLED_CMD);//--set com pins hardware configuration
+	// OLED_WR_Byte(*fd,0x12,OLED_CMD);
+	// OLED_WR_Byte(*fd,0xDB,OLED_CMD);//--set vcomh
+	// OLED_WR_Byte(*fd,0x40,OLED_CMD);//Set VCOM Deselect Level
+	// OLED_WR_Byte(*fd,0x20,OLED_CMD);//-Set Page Addressing Mode (*fd,0x00/0x01/0x02)
+	// OLED_WR_Byte(*fd,0x02,OLED_CMD);//
+	// OLED_WR_Byte(*fd,0x8D,OLED_CMD);//--set Charge Pump enable/disable
+	// OLED_WR_Byte(*fd,0x14,OLED_CMD);//--set(*fd,0x10) disable
+	// OLED_WR_Byte(*fd,0xA4,OLED_CMD);// Disable Entire Display On (*fd,0xa4/0xa5)
+	// OLED_WR_Byte(*fd,0xA6,OLED_CMD);// Disable Inverse Display On (*fd,0xa6/a7) 
+	// OLED_WR_Byte(*fd,0xAF,OLED_CMD);
+	//OLED_Clear(*fd);
 }
  
 //反显函数

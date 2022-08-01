@@ -10,7 +10,7 @@ int main(void)
     mem_info_t mem_info;
 /***********************************下面开始显示操作*******************************/
     OLED_Init(&fd_oled);
- 	OLED_Refresh(fd_oled);
+ 	//OLED_Refresh(fd_oled);
     while(1)
     {
         memset(buff,0x00,sizeof(buff));
@@ -37,7 +37,7 @@ int main(void)
         OLED_DrawLine(0,15,127,15);
         OLED_Refresh(fd_oled);
         OLED_Clear(fd_oled);
-       //sleep(1);
+        sleep(1);
     }
 }
 

@@ -40,119 +40,58 @@ char* showtime(void)//当前时间
     static char buffer[80];
    time( &rawtime );
    info = localtime( &rawtime );
-   strftime(buffer, 80, "%F   %H:%M\0", info);
+   strftime(buffer, 80, "PI %F %H:%M\0", info);
    //printf("格式化的日期 & 时间 : |%s|\n", buffer );
    return buffer;
 }
 
-
 int getCPUtemperature(void)
 {
-    FILE *fd;
-    int re;
-    char buff[256];
-    fd = fopen ("/sys/class/thermal/thermal_zone0/temp", "r");
-    if(fd == NULL)
+    int fd;
+    int re=0,i;
+    char buff[10];
+    fd = open ("/sys/class/thermal/thermal_zone0/temp", O_RDONLY);
+    if(fd < 0)
     {
-            perror("fopen:");
+            perror("open:/sys/class/thermal/thermal_zone0/temp error");
             exit (0);
     }
-    fgets (buff, sizeof(buff), fd);
+    i=read(fd,buff,10);
+    if(i<0)
+    {
+            perror("read:/sys/class/thermal/thermal_zone0/temp error");
+            exit (0);
+    }
     re = atoi(buff);
-
-    fclose(fd);
+    close(fd);
+    //printf("re=%d size=%d\n",re,i);
    return re;
 }
 mem_info_t getRAM(void)
 {
     mem_info_t mem;
-    FILE *fd;
-    char buff[1024];
-    fd = fopen ("/proc/meminfo", "r");
-    if(fd == NULL)
+    int fd,i;
+    char buff[83];
+    char kb[3];
+
+    fd = open ("/proc/meminfo", O_RDONLY);
+    if(fd < 0)
     {
-            perror("fopen:");
+            perror("open:/proc/meminfo error");
             exit (0);
     }
-
-    if (fgets(buff, sizeof(buff), fd) == NULL)
+    i=read(fd,buff,83);
+    if(i<0)
     {
-        printf("fgets error\n");
-        fprintf(stderr,"fgets error");
+            perror("read:/proc/meminfo error");
+            exit (0);
     }
-	//printf("buf1 = %s", buff);//Print the first line of the file
-    sscanf(buff,"%s %u",mem.MemTotal,&mem.total);
-    if (fgets(buff, sizeof(buff), fd) == NULL)
-    {
-        printf("fgets error\n");
-        fprintf(stderr,"fgets error");
-    }
-    //printf("buf2 = %s", buff);//Print the second line of the file
-    sscanf(buff,"%s %u",mem.MemFree,&mem.free);
+    //printf("%s i=%d\n",buff,i);
+    sscanf(buff,"%s %u %s %s %u",mem.MemTotal,&mem.total,kb,mem.MemFree,&mem.free);
     //printf("tot=%u free=%u \n",mem.total,mem.free);
+    close(fd);
     return mem;
 }
-
-
-// int  getRAM_available(void)
-// {
-//     static char buffer[40],buf[40];
-//     int i=0,j=0,re;
-//     //FILE *fd= popen("cat /proc/meminfo |grep -w MemAvailable:","r");
-//     FILE *fd= vpopen("cat /proc/meminfo |grep -w MemAvailable:","r");
-//     if (!fd) {  
-//         fprintf(stderr, "Erro to popen ram");  
-//     }
-//     fgets(buffer, 40, fd);
-
-// 	while (buffer[i] != '\0')
-// 	{
-// 		if (buffer[i]>='0'&&buffer[i]<='9') {
-// 			buf[j]=buffer[i];
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-//     buf[j]='\0';
-//     re = atoi(buf);
-//     //printf("buffer = %s",buffer);
-//     //puts(buf);
-//     //printf("free=%ld \n",re);
-//      //vpclose(fd);
-//      pclose(fd);
-//     return re;
-// }
-
-// int getRAM_free(void)
-// {
-//     static char buffer[40];
-//     int i=0,j=0;
-//     static char buf[40];
-//     int  re;
-//     //FILE *fd= popen("cat /proc/meminfo |grep -w MemFree:","r");
-//     FILE *fd= vpopen("cat /proc/meminfo |grep -w MemFree:","r");
-//     if (!fd) {  
-//         fprintf(stderr, "Erro to popen ram");  
-//     }
-//     fgets(buffer, 40, fd);
-
-// 	while (buffer[i] != '\0')
-// 	{
-// 		if (buffer[i]>='0'&&buffer[i]<='9') {
-// 			buf[j]=buffer[i];
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-//     buf[j]='\0';
-//     re = atoi(buf);
-//     //printf("buffer = %s",buffer);
-//     //puts(buf);
-//     //printf("free=%ld \n",re);
-//     vpclose(fd);
-//     //pclose(fd);
-//     return re;
-// }
 
 double cal_cpuoccupy (cpu_occupy_t *o, cpu_occupy_t *n)
 {
@@ -174,23 +113,27 @@ double cal_cpuoccupy (cpu_occupy_t *o, cpu_occupy_t *n)
  
 void get_cpuoccupy (cpu_occupy_t *cpust)
 {
-    FILE *fd;
-    int n;
+    int fd;
+    int n,i;
     char buff[256];
     cpu_occupy_t *cpu_occupy;
     cpu_occupy=cpust;
- 
-    fd = fopen ("/proc/stat", "r");
-    if(fd == NULL)
+
+    fd = open ("/proc/stat", O_RDONLY);
+    if(fd < 0)
     {
-            perror("fopen:");
+            perror("open:/proc/stat error");
             exit (0);
     }
-    fgets (buff, sizeof(buff), fd);
- 
+    i=read(fd,buff,256);
+    if(i<0)
+    {
+            perror("read:/proc/stat error");
+            exit (0);
+    }
+    //printf("%s i=%d\n",buff,i);
     sscanf (buff, "%s %u %u %u %u %u %u %u", cpu_occupy->name, &cpu_occupy->user, &cpu_occupy->nice,&cpu_occupy->system, &cpu_occupy->idle ,&cpu_occupy->iowait,&cpu_occupy->irq,&cpu_occupy->softirq);
- 
-    fclose(fd);
+    close(fd);
 }
  
 double get_sysCpuUsage()

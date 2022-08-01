@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 31 19:19:47 2022
+# Make data base, printed on Mon Aug  1 12:54:56 2022
 
 # Variables
 
@@ -103,7 +103,7 @@ MOTD_SHOWN = pam
 # automatic
 ^F = $(notdir $^)
 # environment
-SSH_CLIENT = 192.168.43.82 6098 22
+SSH_CLIENT = 192.168.43.82 3540 22
 # automatic
 ?F = $(notdir $?)
 # environment
@@ -135,7 +135,7 @@ _ = /home/pi/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/node
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-78ab9b30-b8dc-4b5f-8c74-f87f873257c4.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-fc712458-8163-4b4e-ba7c-a5f330861ab1.sock
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -145,7 +145,7 @@ HOME = /home/pi
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-XDG_SESSION_ID = 15
+XDG_SESSION_ID = 4
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -155,7 +155,7 @@ SUFFIXES :=
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
 # environment
-SSH_CONNECTION = 192.168.43.82 6098 192.168.43.101 22
+SSH_CONNECTION = 192.168.43.82 3540 192.168.43.101 22
 # variable set hash-table stats:
 # Load=73/1024=7%, Rehash=0, Collisions=1/112=1%
 
@@ -364,7 +364,6 @@ src/main.c.s:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
- 
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 169):
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/oled_i2c_show_status.dir/build.make CMakeFiles/oled_i2c_show_status.dir/src/main.c.s
@@ -380,6 +379,7 @@ rebuild_cache/fast: rebuild_cache
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 
 src/vpopen.i: src/vpopen.c.i
 #  Phony target (prerequisite of .PHONY).
@@ -568,12 +568,12 @@ src/ssd1306.c.s:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 72 / storage = 902 B / avg = 12 B
-# current buf: size = 8174 B / used = 902 B / count = 72 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 73 / storage = 915 B / avg = 12 B
+# current buf: size = 8174 B / used = 915 B / count = 73 / avg = 12 B
 
-# strcache performance: lookups = 267 / hit rate = 73%
+# strcache performance: lookups = 267 / hit rate = 72%
 # hash-table stats:
-# Load=72/8192=1%, Rehash=0, Collisions=0/267=0%
-# Finished Make data base on Sun Jul 31 19:19:47 2022
+# Load=73/8192=1%, Rehash=0, Collisions=0/267=0%
+# Finished Make data base on Mon Aug  1 12:54:56 2022
 
  

@@ -30,13 +30,4 @@ void OLED_ShowNum(u8 x,u8 y,u32 num,u8 len,u8 size1);
 void OLED_WR_BP(int fd,u8 x,u8 y);
 void OLED_ShowPicture(int fd,u8 x0,u8 y0,u8 x1,u8 y1,u8 BMP[]);
 
-
-
-
-
-
-
-
-
-
 #endif
