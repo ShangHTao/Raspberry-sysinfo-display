@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Aug  1 12:54:56 2022
+# Make data base, printed on Mon Aug  1 13:29:15 2022
 
 # Variables
 
@@ -135,7 +135,7 @@ _ = /home/pi/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/node
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-fc712458-8163-4b4e-ba7c-a5f330861ab1.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-8f4ac0de-b8ad-49be-bace-986aeac9a5a2.sock
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -379,7 +379,6 @@ rebuild_cache/fast: rebuild_cache
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 src/vpopen.i: src/vpopen.c.i
 #  Phony target (prerequisite of .PHONY).
@@ -482,6 +481,7 @@ src/sys_status.s: src/sys_status.c.s
 .NOTPARALLEL:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 src/sys_status.c.o:
@@ -574,6 +574,6 @@ src/ssd1306.c.s:
 # strcache performance: lookups = 267 / hit rate = 72%
 # hash-table stats:
 # Load=73/8192=1%, Rehash=0, Collisions=0/267=0%
-# Finished Make data base on Mon Aug  1 12:54:56 2022
+# Finished Make data base on Mon Aug  1 13:29:15 2022
 
  

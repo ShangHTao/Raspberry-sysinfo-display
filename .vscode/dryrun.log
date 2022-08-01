@@ -5,7 +5,6 @@ make: Entering directory '/home/pi/Desktop/oled_show'
 make -s -f CMakeFiles/Makefile2 all
 make[1]: Entering directory '/home/pi/Desktop/oled_show'
 make -s -f CMakeFiles/oled_i2c_show_status.dir/build.make CMakeFiles/oled_i2c_show_status.dir/depend
- 
 make[2]: Entering directory '/home/pi/Desktop/oled_show'
 cd /home/pi/Desktop/oled_show && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/pi/Desktop/oled_show /home/pi/Desktop/oled_show /home/pi/Desktop/oled_show /home/pi/Desktop/oled_show /home/pi/Desktop/oled_show/CMakeFiles/oled_i2c_show_status.dir/DependInfo.cmake --color=
 make[2]: Leaving directory '/home/pi/Desktop/oled_show'
