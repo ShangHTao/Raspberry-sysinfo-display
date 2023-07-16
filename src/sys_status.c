@@ -27,7 +27,11 @@ void getIp(char ip_addr[])
             if(strcmp(ifreq->ifr_name,"wlan0")==0)//是否与wlan0相同
             {
                 strcpy(ip_addr,inet_ntoa(((struct sockaddr_in*)&(ifreq->ifr_addr))->sin_addr));
+            } else if(strcmp(ifreq->ifr_name,"br-lan")==0)//是否与br-lan相同,此修改用于树莓派3b
+            {
+                strcpy(ip_addr,inet_ntoa(((struct sockaddr_in*)&(ifreq->ifr_addr))->sin_addr));
             }
+                       
             ifreq++;
         }
     }
