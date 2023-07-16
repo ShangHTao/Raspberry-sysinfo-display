@@ -8,6 +8,8 @@ oled_show
 │  ├─ ssd1306.h
 │  ├─ sys_status.h
 │  └─ vpopen.h
+├─ obj
+│  ├─ .gitkeep
 └─ src
    ├─ main.c
    ├─ ssd1306.c

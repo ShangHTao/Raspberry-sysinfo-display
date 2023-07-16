@@ -11,13 +11,13 @@ LIB=wiringPi
 #此处用于搜索libwiringPi.so的位置
 LDFLAGS=-L../WiringPi/wiringPi
 #把src变量里所有后缀为*.c的文件替换成*.o
-OBJ=$(patsubst %.c,%.o,$(SRC))
+OBJ=$(patsubst %.c,./obj/%.o,$(notdir $(SRC)))
 CFLAGS=-I$(INC) -I$(EXT_INC)
 
 all:$(TARGET)
 $(TARGET):$(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS) -l$(LIB)
-%.o:%.c
+obj/%.o:src/%.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 .PHONY:clean
@@ -29,4 +29,8 @@ RM=rm -f
 FixPath=$1
 endif
 clean:
-	$(RM) $(call FixPath,./src/*.o)
+	$(RM) $(call FixPath,obj/main.o)
+	$(RM) $(call FixPath,obj/ssd1306.o)
+	$(RM) $(call FixPath,obj/sys_status.o)
+	$(RM) $(call FixPath,obj/vpopen.o)
+	$(RM) $(call FixPath,./oled_i2c_show_status)
